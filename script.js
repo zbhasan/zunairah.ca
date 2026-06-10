@@ -972,6 +972,7 @@ function startMiniInteractive(canvas) {
   document.querySelectorAll(".cp-left-col .cp-node").forEach(node => {
     node.addEventListener("touchstart", e => {
       if (node.classList.contains("cp-matched")) return;
+      e.preventDefault();
       const t = e.touches[0];
       document.querySelectorAll(".cp-node.cp-selected").forEach(n => n.classList.remove("cp-selected"));
       node.classList.add("cp-selected");
@@ -979,19 +980,21 @@ function startMiniInteractive(canvas) {
       dragStartNode = node;
       tempLine = makeTempLine(node);
       document.body.classList.add("cp-dragging");
-    }, { passive: true });
+    }, { passive: false });
   });
 
   /* ─── Touchmove on document ─── */
   document.addEventListener("touchmove", e => {
     if (!isDragging || !tempLine || !dragStartNode) return;
+    e.preventDefault();
     const t = e.touches[0];
     updateTempLine(tempLine, dragStartNode, getBoardPos(t.clientX, t.clientY));
-  }, { passive: true });
+  }, { passive: false });
 
   /* ─── Touchend on document ─── */
   document.addEventListener("touchend", e => {
     if (!isDragging) return;
+    e.preventDefault();
     isDragging = false;
     document.body.classList.remove("cp-dragging");
     removeTempLine();
@@ -1024,7 +1027,7 @@ function startMiniInteractive(canvas) {
         src.classList.remove("cp-selected");
       }
     }
-  }, { passive: true });
+  }, { passive: false });
 
   function resizeSvg() {
     const r = board.getBoundingClientRect();

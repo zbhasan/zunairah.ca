@@ -5385,7 +5385,7 @@ body.cp-dragging {
   45% { content: ""; }
 
   /* "an engineer" (11 chars) */
-  46% { content: ""; }
+  /* 46% { content: ""; }
   47% { content: "a"; }
   48% { content: "an"; }
   49% { content: "an "; }
@@ -5407,7 +5407,7 @@ body.cp-dragging {
   65% { content: "an "; }
   66% { content: "an"; }
   67% { content: "a"; }
-  68% { content: ""; }
+  68% { content: ""; } */
 
   /* "a problem-solver" (16 chars) */
   69% { content: ""; }
